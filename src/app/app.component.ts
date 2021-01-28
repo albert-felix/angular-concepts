@@ -6,11 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   title = 'assignment';
   displayName: boolean = true;
   names: string[] = ["Albert", "Felix", "Kavin", "Kumar"];
   accountNumbers: number[] = [3216654789, 4776519873, 3577869854, 5874632554];
   animal: string = 'cat';
+  twoWay: any;
+  lowerCase: any;
+  upperCase: any;
 
   constructor(){  }
 
@@ -18,8 +22,12 @@ export class AppComponent {
     this.displayName = !this.displayName;
   }
 
-  changeImage(e: Event){
-    const animal = e.target as HTMLInputElement
-    this.animal = animal.value.toLowerCase()
+  changeImage(e: string){
+    this.animal = e.toLowerCase();
+  }
+
+  changeCase(e: string){
+    this.lowerCase = e.toLowerCase();
+    this.upperCase = e.toUpperCase();
   }
 }

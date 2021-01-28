@@ -30,7 +30,7 @@
         <hr class="my-4">
         <div class="form-group">
             <label for="animals">Select Animal</label>
-            <select class="form-control" id="animals" (change)="changeImage($event)">
+            <select class="form-control" id="animals" (change)="changeImage($event.target.value)">
               <option>Cat</option>
               <option>Dog</option>
               <option>Lion</option>
@@ -41,6 +41,20 @@
           <div>
             <img id="animal-img" src='{{"../assets/images/" + animal + ".jpeg"}}' alt="animal image" class="img-thumbnail">
           </div>
+    </div>
+
+    <!-- Two way Data Bindng-->
+
+    <div class="jumbotron">
+        <h1 class="display-6">Two way data binding</h1>
+        <p class="lead">Displaying uppercase and lowercase</p>
+        <hr class="my-4">
+        <label for="two-way">Enter here</label>
+        <input type="text" name="two-way" [(ngModel)]="twoWay" (input)="changeCase($event.target.value)" />
+        <div class="result">
+            <p>Uppercase : {{upperCase}}</p>
+            <p>Lowercase : {{lowerCase}}</p>
+        </div>
     </div>
 
 </div>
