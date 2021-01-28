@@ -1,18 +1,46 @@
-<div class="jumbotron container">
-    <h1 class="display-4">Directives</h1>
-    <p class="lead">Using ngIf and ngFor directives.</p>
-    <hr class="my-4">
-    <button (click) = "toggleDisplay()">Toggle Display</button><br/><br/>
-    <div *ngIf="displayName; else elseBlock">
-        <h5>Name</h5>
-        <ul *ngFor="let name of names">
-            <li>{{name}}</li>
-        </ul>
+<div class="container">
+    <h1 class="display-4" style="text-align: center; margin: 20px;">Angular Assignments</h1>
+
+    <!-- Directives -->
+
+    <div class="jumbotron">
+        <h1 class="display-6">Directives</h1>
+        <p class="lead">Using ngIf and ngFor directives.</p>
+        <hr class="my-4">
+        <button (click) = "toggleDisplay()" class="btn btn-dark">Toggle Display</button><br/><br/>
+        <div *ngIf="displayName; else elseBlock">
+            <h5>Name</h5>
+            <ul *ngFor="let name of names">
+                <li>{{name}}</li>
+            </ul>
+        </div>
+        <ng-template #elseBlock>
+            <h5>Account Number</h5>
+            <ul *ngFor="let accNo of accountNumbers">
+                <li>{{accNo}}</li>
+            </ul>    
+        </ng-template>
     </div>
-    <ng-template #elseBlock>
-        <h5>Account Number</h5>
-        <ul *ngFor="let accNo of accountNumbers">
-            <li>{{accNo}}</li>
-        </ul>    
-    </ng-template>
+
+    <!-- One way Data Binding-->
+
+    <div class="jumbotron">
+        <h1 class="display-6">One way data binding</h1>
+        <p class="lead">Displaying image based on input.</p>
+        <hr class="my-4">
+        <div class="form-group">
+            <label for="animals">Select Animal</label>
+            <select class="form-control" id="animals" (change)="changeImage($event)">
+              <option>Cat</option>
+              <option>Dog</option>
+              <option>Lion</option>
+              <option>Tiger</option>
+              <option>Elephant</option>
+            </select>
+          </div>
+          <div>
+            <img id="animal-img" src='{{"../assets/images/" + animal + ".jpeg"}}' alt="animal image" class="img-thumbnail">
+          </div>
+    </div>
+
 </div>
