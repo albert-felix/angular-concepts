@@ -57,4 +57,19 @@
         </div>
     </div>
 
+    <!-- Component Interaction -->
+
+    <div class="jumbotron">
+        <h1 class="display-6">Component Interaction</h1>
+        <p class="lead">Displaying car details in a modal window from another component</p>
+        <hr class="my-4">
+        <h3>List of Cars</h3>
+        <p><i>Click each cars to view details</i></p>
+        <ul *ngFor="let car of carDetails; index as i" >
+           <a (click)="open(i)" type="submit"> <li>{{car.name}}</li></a>
+        </ul>
+    </div>
+
+
+
 </div>
