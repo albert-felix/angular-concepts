@@ -1,0 +1,50 @@
+<div class="jumbotron">
+    <h1 class="display-6">Component Life Cycle Hooks</h1>
+    <p class="lead">...</p>
+    <hr class="my-4">
+    <div class="grid">
+        <form class="text-center form" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+    
+            <p class="h4 mb-4">Registration Form</p>
+          
+            <input type="text" id="firstName" class="form-control mb-4" placeholder="First Name" formControlName="firstName" required>
+            <input type="text" id="lastName" class="form-control mb-4" placeholder="Last Name" formControlName="lastName" required>
+            <input type="email" id="email" class="form-control mb-4" placeholder="E-mail" formControlName="email" required>
+            <select type="text" id="country" class="form-control mb-4" placeholder="Country" formControlName="country" required (change)="updateStates($event.target.value)">
+                <option disabled value>Select Country</option>
+                <option *ngFor="let country of countries; index as i" value="{{i}}">{{country.country}}</option>
+            </select>
+            <select [attr.disabled]="disableState" type="text" id="state" class="form-control mb-4" placeholder="State" formControlName="state" required>
+                <option disabled value>Select State</option>
+                <option *ngFor="let state of countries[index].states">{{state}}</option>
+            </select>
+            <input type="date" id="date" class="form-control mb-4" placeholder="Date" formControlName="date" required>
+            <input type="time" id="time" class="form-control mb-4" placeholder="Time" formControlName="time" required>
+    
+            <button mdbBtn color="info" block="true" class="my-4" type="submit" [disabled]="!registerForm.valid">Register</button>
+          
+          </form>
+        <div *ngIf="regSuccess">
+            <h4> You are Registered !</h4>
+            <hr/>
+            <p>
+                Full Name : {{registerForm.value.firstName}} {{registerForm.value.lastName}}
+            </p>
+
+            <p>
+                Email id : {{registerForm.value.email}}
+            </p>
+            <p>
+                Address : {{registerForm.value.state}},{{countries[registerForm.value.country].country}}
+            </p>
+            <p>
+                Date and Time : {{registerForm.value.date}} & {{registerForm.value.time}}
+            </p>
+        </div>
+        
+    </div>
+</div>
+
+
+
+

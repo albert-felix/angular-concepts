@@ -17,7 +17,6 @@ export class AppComponent {
   twoWay: string;
   lowerCase: string;
   upperCase: string;
-  closeResult: string = '';
   carDetails = [
     {
       index: '1',
@@ -76,4 +75,5 @@ export class AppComponent {
     const modalRef = this.modalService.open(CarDetailsComponent);
     modalRef.componentInstance.details = this.carDetails[i];
   }
+
 }
