@@ -9,15 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 export class RegistrationComponent implements OnInit {
 
-    registerForm: FormGroup = new FormGroup({
-    firstName: new FormControl(""),
-    lastName:  new FormControl(""),
-    email: new FormControl(""),
-    country: new FormControl(""),
-    state: new FormControl(""),
-    date: new FormControl(this.formatDate()),
-    time: new FormControl(this.currentTime())
-  })
+    registerForm: FormGroup;
     countries = [
       {
         "country": "Afghanistan",
@@ -55,7 +47,15 @@ export class RegistrationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.registerForm = new FormGroup({
+      firstName: new FormControl(""),
+      lastName:  new FormControl(""),
+      email: new FormControl(""),
+      country: new FormControl(""),
+      state: new FormControl(""),
+      date: new FormControl(this.formatDate()),
+      time: new FormControl(this.currentTime())
+    })
   }
 
   submitForm(){
@@ -82,5 +82,10 @@ export class RegistrationComponent implements OnInit {
     let minutes = '0' + today.getMinutes();
     return(hours.slice(-2) + ':' + minutes.slice(-2))
   }
+
+  // check(){
+  //   console.log(this.registerForm)
+  //   console.log(this.registerForm.controls.email.touched)
+  // }
 
 }
